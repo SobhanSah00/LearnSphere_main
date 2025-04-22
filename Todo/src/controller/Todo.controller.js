@@ -5,11 +5,11 @@ import Todo from "../model/Todo.model.js"
 import { isValidObjectId } from "mongoose"
 
 const createTodo = asyncHandler(async (req, res) => {
-    const { title, complited, dueDate, priroty, tags } = req.body;
+    const { title, complited, dueDate, priority, tags } = req.body;
     if (!title) {
         return res.status(400).json(new ApiError("Title is required"));
     }
-    const newTodo = await Todo.create({ title, complited, dueDate, priroty, tags });
+    const newTodo = await Todo.create({ title, complited, dueDate, priority, tags });
     return res.status(201).json(new ApiResponse("Todo created successfully", newTodo));
 })
 
@@ -59,7 +59,7 @@ const deleteTodo = asyncHandler(async (req, res) => {
     if (!isValidObjectId(id)) {
         return res.status(400).json(new ApiError("Invalid ID ."));
     }
-    const todo = await findByid(id);
+    const todo = await Todo.findById(id);
     if (!todo) {
         return res.status(404).json(new ApiError("Todo not found."));
     }
