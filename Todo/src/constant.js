@@ -1,1 +1,0 @@
-export const DB_NAME = "LearnSphere_todo_backend"

@@ -20,13 +20,7 @@ app.use(express.urlencoded({ extended: true, limit: "16mb" }))
 app.use(express.static("public"))
 app.use(cookieParser());
 
-// route imports
 
-import TodoRouter from "./routes/Todo.route.js"
-
-// declaration
-
-app.use("/api/v1/todos",TodoRouter)
 
 export {
     app
